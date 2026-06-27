@@ -1,7 +1,9 @@
-# AI SE Project Flashcards
+# Flashcard App
 
-A flashcard app built with HTML and CSS as part of the TripleTen Software Engineering program.
+My first project in TripleTen's AI-Assisted Software
+Engineering program. It includes decks of flashcards,
+each of which can be viewed in a carousel.
 
-## How to use
+## Features
 
-Open index.html in your browser to view the project.
+## Technologies used
