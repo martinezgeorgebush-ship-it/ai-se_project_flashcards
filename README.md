@@ -6,8 +6,15 @@ each of which can be viewed in a carousel.
 
 ## Features
 
+- Flashcards to memorize topics
+- Multiple decks to browse
+
 ## Technologies used
+
+- HTML
+- CSS
+- JavaScript
 
 ## Deployed Site
 
-Check out [this site](https://USERNAME.github.io/REPO_NAME) on GitHub Pages.
+Check out [this site](https://martinezgeorgebush-ship-it.github.io/ai-se_project_flashcards) on GitHub Pages.
