@@ -7,3 +7,7 @@ each of which can be viewed in a carousel.
 ## Features
 
 ## Technologies used
+
+## Deployed Site
+
+Check out [this site](https://USERNAME.github.io/REPO_NAME) on GitHub Pages.
