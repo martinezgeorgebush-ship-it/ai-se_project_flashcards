@@ -1,0 +1,42 @@
+.decks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.decks__title {
+  width: 100%;
+  font-weight: 700;
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.decks__list {
+  display: contents;
+  margin: 0;
+  padding: 0;
+}
+
+.decks__new-deck-btn {
+  width: 100%;
+  max-width: 325px;
+  height: 205px;
+  padding: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #1a1a1a80;
+  background-color: #d9d9d9;
+  display: flex;
+  border-radius: 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: none;
+}
+
+.decks__new-deck-btn:hover {
+  background-color: #c5c5c5;
+  color: #1a1a1a;
+}
