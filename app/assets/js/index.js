@@ -5,7 +5,7 @@ import { hexToString } from "./colors.js";
 console.log(decks);
 
 const deckTemplate = document.querySelector("#deck-template");
-const decksList = document.querySelector(".decks__list");
+const galleryList = document.querySelector(".gallery__list");
 const homeSection = document.querySelector("#home");
 const notFoundSection = document.querySelector("#not-found");
 const carouselSection = document.querySelector(".carousel");
@@ -15,16 +15,16 @@ function createDeckEl(item) {
   const deckEl = deckTemplate.content.firstElementChild.cloneNode(true);
 
   const colorName = hexToString(item.color);
-  deckEl.className = `deck deck_color_${colorName}`;
+  deckEl.className = `card card_color_${colorName}`;
 
-  const deckLink = deckEl.querySelector(".deck__link");
+  const deckLink = deckEl.querySelector(".card__link");
   deckLink.href = `#carousel/${item.id}`;
 
-  deckEl.querySelector(".deck__title").textContent = item.name;
-  deckEl.querySelector(".deck__count").textContent =
+  deckEl.querySelector(".card__title").textContent = item.name;
+  deckEl.querySelector(".card__count").textContent =
     `${item.cards.length} cards`;
 
-  const deleteBtn = deckEl.querySelector(".deck__delete-btn");
+  const deleteBtn = deckEl.querySelector(".card__delete-btn");
   deleteBtn.addEventListener("click", () => {
     deckEl.remove();
   });
@@ -34,7 +34,7 @@ function createDeckEl(item) {
 
 function renderDeckEl(item) {
   const deckEl = createDeckEl(item);
-  decksList.prepend(deckEl);
+  galleryList.prepend(deckEl);
 }
 
 function renderView(hash) {
