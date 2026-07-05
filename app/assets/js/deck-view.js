@@ -1,4 +1,5 @@
 import { hexToString } from "./colors.js";
+import { openModal } from "./modal.js";
 
 const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
@@ -20,7 +21,9 @@ function createCardEl(card, colorName) {
 
   const deleteBtn = cardEl.querySelector(".card__btn_type_delete");
   deleteBtn.addEventListener("click", () => {
-    cardEl.remove();
+    openModal(() => {
+      cardEl.remove();
+    });
   });
 
   return cardEl;
