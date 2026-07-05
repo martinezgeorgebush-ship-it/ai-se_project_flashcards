@@ -1,3 +1,4 @@
+import { openModal } from "./modal.js";
 import { decks, getDeckByID } from "./decks.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView, getCurrentDeck } from "./deck-view.js";
@@ -28,7 +29,9 @@ function createDeckEl(item) {
 
   const deleteBtn = deckEl.querySelector(".card__btn_type_delete");
   deleteBtn.addEventListener("click", () => {
-    deckEl.remove();
+    openModal(() => {
+      deckEl.remove();
+    });
   });
 
   return deckEl;
