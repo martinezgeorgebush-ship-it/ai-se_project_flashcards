@@ -45,7 +45,7 @@
   cursor: pointer;
   border: none;
   position: relative;
-  z-index: +;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
