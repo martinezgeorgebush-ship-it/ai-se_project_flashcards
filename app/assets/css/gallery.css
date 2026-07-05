@@ -40,3 +40,26 @@
   background-color: #c5c5c5;
   color: #1a1a1a;
 }
+
+.gallery__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.gallery__practice-btn {
+  padding: 14px 22px;
+  border-radius: 16px;
+  border: none;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gallery__practice-btn:hover {
+  opacity: 0.9;
+}
