@@ -15,19 +15,6 @@
     z-index: 10;
   }
 
-  .gallery__new-card-btn {
-    position: fixed;
-    bottom: 32px;
-    left: 20px;
-    right: 20px;
-    z-index: 20;
-    height: 44px;
-    aspect-ratio: unset;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    font-weight: 500;
-  }
   .footer {
     position: fixed;
     bottom: 8px;
@@ -41,5 +28,37 @@
 
   .page__main-content {
     margin-bottom: 20px;
+  }
+
+  .gallery__new-card-btn,
+  .gallery__practice-btn {
+    position: fixed;
+    bottom: 32px;
+    height: 44px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    z-index: 20;
+  }
+
+  .gallery__new-card-btn {
+    left: 20px;
+    right: 20px;
+    aspect-ratio: unset;
+  }
+
+  .gallery__new-card-btn_location_deck-view {
+    left: 20px;
+    right: auto;
+    width: calc(50% - 25px);
+  }
+
+  .gallery__practice-btn {
+    right: 20px;
+    left: auto;
+    width: calc(50% - 25px);
   }
 }
