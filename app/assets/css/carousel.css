@@ -97,3 +97,42 @@
   opacity: 0.2;
   cursor: default;
 }
+@media (max-width: 500px) {
+  .carousel {
+    width: 100%;
+    max-width: 353px;
+  }
+
+  .carousel__card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 353 / 300;
+  }
+
+  .carousel__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "left flip right";
+    align-items: center;
+    justify-items: center;
+    margin-top: 24px;
+    gap: 10px;
+  }
+
+  .carousel__btn_type_left {
+    position: static;
+    transform: none;
+    grid-area: left;
+  }
+
+  .carousel__btn_type_right {
+    position: static;
+    transform: none;
+    grid-area: right;
+  }
+
+  .carousel__btn_type_flip {
+    grid-area: flip;
+    margin-top: 0;
+  }
+}
