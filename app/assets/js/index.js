@@ -3,6 +3,7 @@ import { decks, getDeckByID } from "./decks.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView, getCurrentDeck } from "./deck-view.js";
 import { hexToString } from "./colors.js";
+import { showView } from "./view.js";
 
 console.log(decks);
 
@@ -10,7 +11,6 @@ const deckTemplate = document.querySelector("#deck-template");
 const homeSection = document.querySelector("#home");
 const homeGalleryList = homeSection.querySelector(".gallery__list");
 const notFoundSection = document.querySelector("#not-found");
-const carouselSection = document.querySelector(".carousel");
 const mainContent = document.querySelector(".page__main-content");
 const deckViewSection = document.querySelector("#deck-view");
 
@@ -43,13 +43,10 @@ function renderDeckEl(item) {
 }
 
 function renderView(hash) {
-  homeSection.style.display = "none";
-  notFoundSection.style.display = "none";
-  carouselSection.style.display = "none";
   mainContent.classList.remove("page__main-content_location_carousel");
-  deckViewSection.style.display = "none";
+
   if (hash === "#home" || hash === "") {
-    homeSection.style.display = "";
+    showView(homeSection, "block");
     return;
   }
 
@@ -74,7 +71,7 @@ function renderView(hash) {
     }
   }
 
-  notFoundSection.style.display = "block";
+  showView(notFoundSection, "flex");
 }
 
 window.addEventListener("hashchange", () => {

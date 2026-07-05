@@ -1,11 +1,11 @@
 import { hexToString, removeColorClasses } from "./colors.js";
+import { showView } from "./view.js";
 
 function getCarouselTitleString(deck, index) {
   return `${deck.name} · ${index + 1}/${deck.cards.length}`;
 }
 
 function renderCarouselView(deck) {
-  console.log(deck);
   const carouselSection = document.querySelector(".carousel");
   const carouselTitle = carouselSection.querySelector(".carousel__title");
   const carouselCard = carouselSection.querySelector(".carousel__card");
@@ -61,7 +61,7 @@ function renderCarouselView(deck) {
   };
 
   updateDisplay();
-  carouselSection.style.display = "flex";
+  showView(carouselSection, "flex");
 }
 
 export { renderCarouselView };
