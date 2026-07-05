@@ -69,3 +69,11 @@
   );
   background-blend-mode: overlay;
 }
+
+@media (max-width: 768px) {
+  .gallery__new-card-btn {
+    max-width: none;
+    height: auto;
+    aspect-ratio: 325 / 205;
+  }
+}

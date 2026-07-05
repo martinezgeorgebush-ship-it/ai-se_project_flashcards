@@ -100,3 +100,11 @@
 .card_color_yellow {
   background-color: #f5d770;
 }
+
+@media (max-width: 768px) {
+  .card {
+    max-width: none;
+    height: auto;
+    aspect-ratio: 325 / 205;
+  }
+}
