@@ -34,20 +34,6 @@ function createDeckEl(item) {
   return deckEl;
 }
 
-function createCardEl(card, colorName) {
-  const cardEl = cardTemplate.content.firstElementChild.cloneNode(true);
-  cardEl.className = `card card_color_${colorName}`;
-  const title = cardEl.querySelector(".card__title");
-  title.textContent = card.question;
-
-  const deleteBtn = cardEl.querySelector(".card__btn_type_delete");
-  deleteBtn.addEventListener("click", () => {
-    cardEl.remove();
-  });
-
-  return cardEl;
-}
-
 function renderDeckEl(item) {
   const deckEl = createDeckEl(item);
   homeGalleryList.prepend(deckEl);
