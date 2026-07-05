@@ -8,6 +8,8 @@ each of which can be viewed in a carousel.
 
 - Flashcards to memorize topics
 - Multiple decks to browse
+- Open deck view to browse and manage all cards in a single deck
+- Fully responsive design for mobile, tablet, and desktop screens
 
 ## Technologies used
 
