@@ -10,6 +10,7 @@ each of which can be viewed in a carousel.
 - Multiple decks to browse
 - Open deck view to browse and manage all cards in a single deck
 - Fully responsive design for mobile, tablet, and desktop screens
+- Confirmations modal to prevent accidental deletion of decks and cards
 
 ## Technologies used
 
