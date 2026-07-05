@@ -22,10 +22,11 @@
 }
 
 .page__main-content_location_carousel {
-  margin-top: 106px;
+  margin-top: 152px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 0;
 }
 @media (max-width: 768px) {
   .page {

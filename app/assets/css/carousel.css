@@ -48,6 +48,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow:
+    0px 2px 8px 0px #0000001a,
+    -1px 2px 2px 0px #ffffffb2 inset,
+    1px -1px 2px 0px #00000040 inset;
 }
 
 .carousel__card-text {
@@ -106,7 +110,7 @@
   .carousel__card {
     width: 100%;
     height: auto;
-    aspect-ratio: 353 / 300;
+    aspect-ratio: 353 / 420;
   }
 
   .carousel__grid {
@@ -116,7 +120,7 @@
     align-items: center;
     justify-items: center;
     margin-top: 24px;
-    gap: 10px;
+    gap: 24px;
   }
 
   .carousel__btn_type_left {
