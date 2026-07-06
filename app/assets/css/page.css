@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-grow: 0;
 }
 @media (max-width: 768px) {
   .page {

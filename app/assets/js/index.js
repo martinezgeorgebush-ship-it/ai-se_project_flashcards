@@ -46,7 +46,7 @@ function renderView(hash) {
   mainContent.classList.remove("page__main-content_location_carousel");
 
   if (hash === "#home" || hash === "") {
-    showView(homeSection, "block");
+    showView(homeSection, "flex");
     return;
   }
 
