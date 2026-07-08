@@ -76,4 +76,8 @@
     height: auto;
     aspect-ratio: 325 / 205;
   }
+  .gallery__title {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
 }
