@@ -1,0 +1,36 @@
+.new-deck-view__color-input_color_green {
+  background-color: #64d583;
+}
+
+.new-deck-view__color-input_color_blue {
+  background-color: #91a8f9;
+}
+
+.new-deck-view__color-input_color_purple {
+  background-color: #aa8ef0;
+}
+
+.new-deck-view__color-input_color_pink {
+  background-color: #ee92d7;
+}
+
+.new-deck-view__color-input_color_orange {
+  background-color: #ee955e;
+}
+
+.new-deck-view__color-input_color_yellow {
+  background-color: #f5d770;
+}
+
+.new-deck-view__color-input {
+  border: 2px solid transparent;
+}
+
+.new-deck-view__color-input:checked {
+  border: 2px solid #1a1a1a;
+}
+
+.new-deck-view__submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

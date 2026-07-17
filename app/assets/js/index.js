@@ -13,6 +13,7 @@ const homeGalleryList = homeSection.querySelector(".gallery__list");
 const notFoundSection = document.querySelector("#not-found");
 const mainContent = document.querySelector(".page__main-content");
 const deckViewSection = document.querySelector("#deck-view");
+const newDeckSection = document.querySelector("#new-deck-view");
 
 function createDeckEl(item) {
   const deckEl = deckTemplate.content.firstElementChild.cloneNode(true);
@@ -70,6 +71,10 @@ function renderView(hash) {
       return;
     }
   }
+  if (hash === "#new-deck") {
+    showView(newDeckSection, "flex");
+    return;
+  }
 
   showView(notFoundSection, "flex");
 }
@@ -85,6 +90,11 @@ practiceBtn.addEventListener("click", () => {
   if (currentDeck) {
     window.location.hash = `#carousel/${currentDeck.id}`;
   }
+});
+
+const newDeckBtn = document.querySelector("#home .gallery__new-card-btn");
+newDeckBtn.addEventListener("click", () => {
+  window.location.hash = "#new-deck";
 });
 
 decks.forEach(renderDeckEl);
