@@ -4,6 +4,7 @@ import { renderCarouselView } from "./carousel.js";
 import { renderDeckView, getCurrentDeck } from "./deck-view.js";
 import { hexToString } from "./colors.js";
 import { showView } from "./view.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 
 console.log(decks);
 
@@ -73,6 +74,7 @@ function renderView(hash) {
   }
   if (hash === "#new-deck") {
     showView(newDeckSection, "flex");
+    disableSubmitBtn();
     return;
   }
 
