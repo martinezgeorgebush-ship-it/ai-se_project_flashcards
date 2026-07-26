@@ -1,3 +1,5 @@
+import { decks } from "./decks.js";
+
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 const newDeckForm = document.querySelector("#new-deck-form");
 const submitBtn = newDeckForm.querySelector(".new-deck-view__submit");
@@ -36,3 +38,20 @@ function normalizeColor(color) {
 export function disableSubmitBtn() {
   submitBtn.disabled = false;
 }
+
+newDeckForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const values = Object.fromEntries(formData);
+  const jsonData = JSON.parse(values.deckData);
+  const color = normalizeColor(values.color);
+  const id = slugify(jsonData.name) + Date.now();
+  decks.push({
+    id: id,
+    color: color,
+    name: jsonData.name,
+    cards: jsonData.cards,
+  });
+    window.location.hash = "deck/" + id;
+});
+
