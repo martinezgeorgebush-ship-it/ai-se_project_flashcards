@@ -4,7 +4,15 @@ const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 const newDeckForm = document.querySelector("#new-deck-form");
 const submitBtn = newDeckForm.querySelector(".new-deck-view__submit");
 const textarea = newDeckForm.querySelector(".new-deck-view__textarea");
-/**
+const errorModal =document.querySelector("#error-modal");
+const errorModalCloseBtn = errorModal.querySelector(".modal__btn_type_close");
+const errorMessageEl = errorModal.querySelector(".modal__error");
+
+errorModalCloseBtn.addEventListener("click",() =>{
+ errorModal.classList.remove("modal_visible")
+}
+);
+/*
  * Converts a string to a URL-safe slug: lowercase with any run of
  * non-alphanumeric characters replaced by a single hyphen, and no leading or
  * trailing hyphens.
@@ -35,6 +43,24 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
+function showError(message) {
+errorMessageEl.textContent = message;
+errorModal.classList.add("modal_visible");
+}
+
+function parseJSON(jsonString) {
+try{
+  return JSON.parse(jsonString);
+} catch (error) {
+  return null;
+}
+}
+function validateName(name){
+  if (typeof name !="string" || name.length < 2 || name.length > 80) {
+    return null;
+  }
+  return name;
+}
 export function disableSubmitBtn() {
   submitBtn.disabled = false;
 }
@@ -43,8 +69,29 @@ newDeckForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const values = Object.fromEntries(formData);
-  const jsonData = JSON.parse(values.deckData);
+  const jsonData = parseJSON(values.deckData);
+    if(jsonData === null){
+   showError("Invalid JSON format"); 
+   return;
+  }
+
+  if(validateName(jsonData.name) === null){
+    showError("Name must be a string between 2 and 80 characters.");
+    return;
+  }
+  
+  if(!Array.isArray(jsonData.cards)) {
+    showError("Cards must be an array");
+    return;
+  }
+
   const color = normalizeColor(values.color);
+  if(typeof jsonData.color ==="string") {
+    if(jsonData.color.toLowerCase() !== color) {
+      showError("Select the correct color")
+      return;
+    }
+  }
   const id = slugify(jsonData.name) + Date.now();
   decks.push({
     id: id,

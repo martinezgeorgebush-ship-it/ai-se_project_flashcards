@@ -5,10 +5,14 @@
   width: 100%;
   height: 100%;
   background-color: #00000080;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 100;
+}
+
+.modal_visible {
+  display: flex;
 }
 
 .modal__content {
