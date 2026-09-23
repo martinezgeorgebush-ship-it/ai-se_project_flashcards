@@ -43,6 +43,8 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
+export{showError};
+
 function showError(message) {
 errorMessageEl.textContent = message;
 errorModal.classList.add("modal_visible");

@@ -5,6 +5,8 @@ import { renderDeckView, getCurrentDeck } from "./deck-view.js";
 import { hexToString } from "./colors.js";
 import { showView } from "./view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
+import { getDecks } from "./api.js";
+import { showError } from "./new-deck-view.js";
 
 console.log(decks);
 
@@ -99,5 +101,19 @@ newDeckBtn.addEventListener("click", () => {
   window.location.hash = "#new-deck";
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+  .then((decks) => {
 decks.forEach(renderDeckEl);
-renderView(window.location.hash);
+  })
+
+.catch(() =>{
+  
+  showError("Can't fetch decks");
+
+})
+
+.finally (()=>{
+  renderView(window.location.hash);
+})
+}); 
