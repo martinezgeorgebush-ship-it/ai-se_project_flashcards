@@ -19,4 +19,13 @@ function processResponse(res) {
 
   }
 
-  export { getDecks};
+  export { getDecks, deleteDeck};
+
+  function deleteDeck(deckId) {
+    return fetch(`${baseUrl}/decks/${deckId}`,{
+      method: "DELETE",
+      headers,
+    }
+      )
+      .then(processResponse);
+  }

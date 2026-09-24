@@ -4,7 +4,7 @@ import { renderDeckView, getCurrentDeck } from "./deck-view.js";
 import { hexToString } from "./colors.js";
 import { showView } from "./view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
-import { getDecks } from "./api.js";
+import { getDecks, deleteDeck } from "./api.js";
 import { showError } from "./new-deck-view.js";
 import{ decks, fetchedDecks, getDeckByID } from "./decks.js";
 
@@ -34,7 +34,15 @@ function createDeckEl(item) {
   const deleteBtn = deckEl.querySelector(".card__btn_type_delete");
   deleteBtn.addEventListener("click", () => {
     openModal(() => {
+     deleteDeck(item._id)
+     .then(() => {
       deckEl.remove();
+      const deckIndex = fetchedDecks.findIndex((deck)=> deck._id === item._id);
+      fetchedDecks.splice(deckIndex, 1);
+     })
+     .catch(() => {
+      showError("Can't delete deck");
+     });
     });
   });
 
