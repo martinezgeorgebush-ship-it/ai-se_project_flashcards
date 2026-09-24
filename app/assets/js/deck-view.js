@@ -16,6 +16,8 @@ function createCardEl(card, colorName) {
   const title = cardEl.querySelector(".card__title");
   title.textContent = card.question;
 
+  
+
   const deleteBtn = cardEl.querySelector(".card__btn_type_delete");
   deleteBtn.addEventListener("click", () => {
     openModal(() => {

@@ -1,5 +1,4 @@
 import { openModal } from "./modal.js";
-import { decks, getDeckByID } from "./decks.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView, getCurrentDeck } from "./deck-view.js";
 import { hexToString } from "./colors.js";
@@ -7,6 +6,7 @@ import { showView } from "./view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
 import { getDecks } from "./api.js";
 import { showError } from "./new-deck-view.js";
+import{ decks, fetchedDecks, getDeckByID } from "./decks.js";
 
 console.log(decks);
 
@@ -25,7 +25,7 @@ function createDeckEl(item) {
   deckEl.className = `card card_color_${colorName}`;
 
   const deckLink = deckEl.querySelector(".card__link");
-  deckLink.href = `#deck/${item.id}`;
+  deckLink.href = `#deck/${item._id}`;
 
   deckEl.querySelector(".card__title").textContent = item.name;
   deckEl.querySelector(".card__count").textContent =
@@ -92,7 +92,7 @@ const practiceBtn = deckViewSection.querySelector(".gallery__practice-btn");
 practiceBtn.addEventListener("click", () => {
   const currentDeck = getCurrentDeck();
   if (currentDeck) {
-    window.location.hash = `#carousel/${currentDeck.id}`;
+    window.location.hash = `#carousel/${currentDeck._id}`;
   }
 });
 
@@ -104,7 +104,9 @@ newDeckBtn.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   getDecks()
   .then((decks) => {
-decks.forEach(renderDeckEl);
+    fetchedDecks.push(...decks);
+    console.log("fetchedDecks:", fetchedDecks);
+    decks.forEach(renderDeckEl);
   })
 
 .catch(() =>{
