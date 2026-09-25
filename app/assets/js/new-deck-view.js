@@ -1,4 +1,5 @@
-import { decks } from "./decks.js";
+import { decks, fetchedDecks } from "./decks.js";
+import { addDeck } from "./api.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 const newDeckForm = document.querySelector("#new-deck-form");
@@ -94,13 +95,15 @@ newDeckForm.addEventListener("submit", (e) => {
       return;
     }
   }
-  const id = slugify(jsonData.name) + Date.now();
-  decks.push({
-    id: id,
-    color: color,
-    name: jsonData.name,
-    cards: jsonData.cards,
-  });
-    window.location.hash = "deck/" + id;
-});
+  
 
+addDeck({
+  color:color,
+  name:jsonData.name,
+  cards:jsonData.cards,
+})
+.then((newDeck) => {
+  fetchedDecks.push(newDeck);
+  window.location.hash = "deck/" + newDeck._id;
+});
+});

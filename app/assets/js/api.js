@@ -19,7 +19,7 @@ function processResponse(res) {
 
   }
 
-  export { getDecks, deleteDeck};
+  export { getDecks, deleteDeck,addDeck};
 
   function deleteDeck(deckId) {
     return fetch(`${baseUrl}/decks/${deckId}`,{
@@ -29,3 +29,12 @@ function processResponse(res) {
       )
       .then(processResponse);
   }
+
+  function addDeck(deckData) {
+    return fetch (`${baseUrl}/decks`, {
+      method:"POST",
+      headers,
+      body:JSON.stringify(deckData)
+    }
+  ).then(processResponse);
+}
