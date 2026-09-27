@@ -15,6 +15,7 @@ const notFoundSection = document.querySelector("#not-found");
 const mainContent = document.querySelector(".page__main-content");
 const deckViewSection = document.querySelector("#deck-view");
 const newDeckSection = document.querySelector("#new-deck-view");
+const aboutSection = document.querySelector("#about")
 
 function createDeckEl(item) {
   const deckEl = deckTemplate.content.firstElementChild.cloneNode(true);
@@ -83,6 +84,11 @@ function renderView(hash) {
   if (hash === "#new-deck") {
     showView(newDeckSection, "flex");
     disableSubmitBtn();
+    return;
+  }
+
+  if(hash ==="#about") {
+    showView(aboutSection, "flex");
     return;
   }
 
