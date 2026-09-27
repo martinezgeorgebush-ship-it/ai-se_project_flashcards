@@ -6,9 +6,7 @@ import { showView } from "./view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
 import { getDecks, deleteDeck } from "./api.js";
 import { showError } from "./new-deck-view.js";
-import{ decks, fetchedDecks, getDeckByID } from "./decks.js";
-
-console.log(decks);
+import{  fetchedDecks, getDeckByID } from "./decks.js";
 
 const deckTemplate = document.querySelector("#deck-template");
 const homeSection = document.querySelector("#home");
