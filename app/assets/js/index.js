@@ -17,6 +17,13 @@ const deckViewSection = document.querySelector("#deck-view");
 const newDeckSection = document.querySelector("#new-deck-view");
 const aboutSection = document.querySelector("#about")
 
+/**
+ * Builds a deck card element from the deck template, filled in with the given deck's data,
+ * and wires up its delete button.
+ * @param {Object} item - The deck object to build a card for.
+ * @returns {HTMLElement} The completed deck card element.
+ */
+
 function createDeckEl(item) {
   const deckEl = deckTemplate.content.firstElementChild.cloneNode(true);
 
@@ -48,10 +55,23 @@ function createDeckEl(item) {
   return deckEl;
 }
 
+
+/**
+ * Creates a deck card element for the given deck and adds it to the top of the deck list.
+ * @param {Object} item - The deck object to render.
+ * @returns {void}
+ */
+
 function renderDeckEl(item) {
   const deckEl = createDeckEl(item);
   homeGalleryList.prepend(deckEl);
 }
+
+/**
+ * Shows the correct section of the page based on the current URL hash.
+ * @param {string} hash - The current URL hash (e.g. "#home", "#deck/123").
+ * @returns {void}
+ */
 
 function renderView(hash) {
   mainContent.classList.remove("page__main-content_location_carousel");
@@ -131,3 +151,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderView(window.location.hash);
 })
 }); 
+
+export { renderDeckEl };

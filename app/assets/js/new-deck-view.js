@@ -1,5 +1,6 @@
 import {  fetchedDecks } from "./decks.js";
 import { addDeck } from "./api.js";
+import { renderDeckEl } from "./index.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 const newDeckForm = document.querySelector("#new-deck-form");
@@ -122,6 +123,7 @@ addDeck({
 })
 .then((newDeck) => {
   fetchedDecks.push(newDeck);
+    renderDeckEl(newDeck);
   window.location.hash = "deck/" + newDeck._id;
 });
 });

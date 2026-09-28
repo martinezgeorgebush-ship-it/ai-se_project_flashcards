@@ -3,6 +3,7 @@ const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector(".carousel");
 const notFoundSection = document.querySelector("#not-found");
 const aboutSection = document.querySelector("#about");
+const newDeckSection = document.querySelector("#new-deck-view");
 
 function showView(currentSection, display) {
   homeSection.style.display = "none";
@@ -10,7 +11,9 @@ function showView(currentSection, display) {
   aboutSection.style.display="none";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
+  newDeckSection.style.display = "none";
   currentSection.style.display = display;
+ 
 }
 
 export { showView };
