@@ -5,6 +5,11 @@ const headers = {
     Authorization:"01a0c715-94d2-770d-9eb0-b9c314af27ba"
 }
 
+/**
+ * Handles a fetch response: parses it as JSON if successful, or rejects with an error message.
+ * @param {Response} res - The response object returned by fetch.
+ * @returns {Promise<Object>} A promise that resolves to the parsed JSON data.
+ */
 
 function processResponse(res) {
   if (res.ok) {
