@@ -8,12 +8,11 @@ const newDeckSection = document.querySelector("#new-deck-view");
 function showView(currentSection, display) {
   homeSection.style.display = "none";
   deckViewSection.style.display = "none";
-  aboutSection.style.display="none";
+  aboutSection.style.display = "none";
   carouselSection.style.display = "none";
   notFoundSection.style.display = "none";
   newDeckSection.style.display = "none";
   currentSection.style.display = display;
- 
 }
 
 export { showView };

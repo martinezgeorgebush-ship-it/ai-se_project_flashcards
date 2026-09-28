@@ -11,7 +11,10 @@ each of which can be viewed in a carousel.
 - Open deck view to browse and manage all cards in a single deck
 - Fully responsive design for mobile, tablet, and desktop screens
 - Confirmations modal to prevent accidental deletion of decks and cards
-
+- Create new decks with custom names, colors, and cards
+- Errors are handled and displayed to the user via a modal
+- Decks are stored and managed through a remote API connected to a database
+- Code is fully documented using JSDoc
 ## Technologies used
 
 - HTML

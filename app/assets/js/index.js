@@ -6,7 +6,7 @@ import { showView } from "./view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
 import { getDecks, deleteDeck } from "./api.js";
 import { showError } from "./new-deck-view.js";
-import{  fetchedDecks, getDeckByID } from "./decks.js";
+import { fetchedDecks, getDeckByID } from "./decks.js";
 
 const deckTemplate = document.querySelector("#deck-template");
 const homeSection = document.querySelector("#home");
@@ -15,7 +15,7 @@ const notFoundSection = document.querySelector("#not-found");
 const mainContent = document.querySelector(".page__main-content");
 const deckViewSection = document.querySelector("#deck-view");
 const newDeckSection = document.querySelector("#new-deck-view");
-const aboutSection = document.querySelector("#about")
+const aboutSection = document.querySelector("#about");
 
 /**
  * Builds a deck card element from the deck template, filled in with the given deck's data,
@@ -40,21 +40,22 @@ function createDeckEl(item) {
   const deleteBtn = deckEl.querySelector(".card__btn_type_delete");
   deleteBtn.addEventListener("click", () => {
     openModal(() => {
-     deleteDeck(item._id)
-     .then(() => {
-      deckEl.remove();
-      const deckIndex = fetchedDecks.findIndex((deck)=> deck._id === item._id);
-      fetchedDecks.splice(deckIndex, 1);
-     })
-     .catch(() => {
-      showError("Can't delete deck");
-     });
+      deleteDeck(item._id)
+        .then(() => {
+          deckEl.remove();
+          const deckIndex = fetchedDecks.findIndex(
+            (deck) => deck._id === item._id,
+          );
+          fetchedDecks.splice(deckIndex, 1);
+        })
+        .catch(() => {
+          showError("Can't delete deck");
+        });
     });
   });
 
   return deckEl;
 }
-
 
 /**
  * Creates a deck card element for the given deck and adds it to the top of the deck list.
@@ -107,7 +108,7 @@ function renderView(hash) {
     return;
   }
 
-  if(hash ==="#about") {
+  if (hash === "#about") {
     showView(aboutSection, "flex");
     return;
   }
@@ -135,21 +136,19 @@ newDeckBtn.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   getDecks()
-  .then((decks) => {
-    fetchedDecks.push(...decks);
-    console.log("fetchedDecks:", fetchedDecks);
-    decks.forEach(renderDeckEl);
-  })
+    .then((decks) => {
+      fetchedDecks.push(...decks);
+      console.log("fetchedDecks:", fetchedDecks);
+      decks.forEach(renderDeckEl);
+    })
 
-.catch(() =>{
-  
-  showError("Can't fetch decks");
+    .catch(() => {
+      showError("Can't fetch decks");
+    })
 
-})
-
-.finally (()=>{
-  renderView(window.location.hash);
-})
-}); 
+    .finally(() => {
+      renderView(window.location.hash);
+    });
+});
 
 export { renderDeckEl };

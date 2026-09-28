@@ -1,4 +1,4 @@
-import {  fetchedDecks } from "./decks.js";
+import { fetchedDecks } from "./decks.js";
 import { addDeck } from "./api.js";
 import { renderDeckEl } from "./index.js";
 
@@ -15,14 +15,13 @@ textarea.placeholder = `{
     }
   ]
 }`;
-const errorModal =document.querySelector("#error-modal");
+const errorModal = document.querySelector("#error-modal");
 const errorModalCloseBtn = errorModal.querySelector(".modal__btn_type_close");
 const errorMessageEl = errorModal.querySelector(".modal__error");
 
-errorModalCloseBtn.addEventListener("click",() =>{
- errorModal.classList.remove("modal_visible")
-}
-);
+errorModalCloseBtn.addEventListener("click", () => {
+  errorModal.classList.remove("modal_visible");
+});
 
 /**
  * Returns a consistent lowercase hex color string with a leading "#".
@@ -39,7 +38,7 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
-export{showError};
+export { showError };
 
 /**
  * Displays the given error message in the error modal.
@@ -48,8 +47,8 @@ export{showError};
  */
 
 function showError(message) {
-errorMessageEl.textContent = message;
-errorModal.classList.add("modal_visible");
+  errorMessageEl.textContent = message;
+  errorModal.classList.add("modal_visible");
 }
 
 /**
@@ -59,11 +58,11 @@ errorModal.classList.add("modal_visible");
  */
 
 function parseJSON(jsonString) {
-try{
-  return JSON.parse(jsonString);
-} catch (error) {
-  return null;
-}
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
 }
 
 /**
@@ -72,8 +71,8 @@ try{
  * @returns {string|null} The valid name, or null if it fails validation.
  */
 
-function validateName(name){
-  if (typeof name !="string" || name.length < 2 || name.length > 80) {
+function validateName(name) {
+  if (typeof name != "string" || name.length < 2 || name.length > 80) {
     return null;
   }
   return name;
@@ -92,38 +91,41 @@ newDeckForm.addEventListener("submit", (e) => {
   const formData = new FormData(e.target);
   const values = Object.fromEntries(formData);
   const jsonData = parseJSON(values.deckData);
-    if(jsonData === null){
-   showError("Invalid JSON format"); 
-   return;
+  if (jsonData === null) {
+    showError("Invalid JSON format");
+    return;
   }
 
-  if(validateName(jsonData.name) === null){
+  if (validateName(jsonData.name) === null) {
     showError("Name must be a string between 2 and 80 characters.");
     return;
   }
-  
-  if(!Array.isArray(jsonData.cards)) {
+
+  if (!Array.isArray(jsonData.cards)) {
     showError("Cards must be an array");
     return;
   }
 
   const color = normalizeColor(values.color);
-  if(typeof jsonData.color ==="string") {
-    if(jsonData.color.toLowerCase() !== color) {
-      showError("Select the correct color")
+  if (typeof jsonData.color === "string") {
+    if (jsonData.color.toLowerCase() !== color) {
+      showError("Select the correct color");
       return;
     }
   }
-  
 
-addDeck({
-  color:color,
-  name:jsonData.name,
-  cards:jsonData.cards,
-})
-.then((newDeck) => {
-  fetchedDecks.push(newDeck);
-    renderDeckEl(newDeck);
-  window.location.hash = "deck/" + newDeck._id;
-});
+  addDeck({
+    color: color,
+    name: jsonData.name,
+    cards: jsonData.cards,
+  })
+    .then((newDeck) => {
+      const deckToRender = { ...newDeck, cards: jsonData.cards };
+      fetchedDecks.push(deckToRender);
+      renderDeckEl(deckToRender);
+      window.location.hash = "deck/" + deckToRender._id;
+    })
+    .catch(() => {
+      showError("Can't create deck");
+    });
 });
