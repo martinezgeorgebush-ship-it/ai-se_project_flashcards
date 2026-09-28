@@ -60,3 +60,20 @@
 .modal__btn_type_cancel:hover {
   background-color: #d9d9d9;
 }
+
+#error-modal .modal__content {
+  background-color: #ffaea5;
+}
+
+
+.modal__btn_type_close {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+#error-modal .modal__content {
+  background-color: #ffaea5;
+  border-radius: 20px;
+  padding: 12px 10px;
+  max-width: 320px;
+}

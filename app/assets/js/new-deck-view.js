@@ -5,6 +5,15 @@ const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 const newDeckForm = document.querySelector("#new-deck-form");
 const submitBtn = newDeckForm.querySelector(".new-deck-view__submit");
 const textarea = newDeckForm.querySelector(".new-deck-view__textarea");
+textarea.placeholder = `{
+  "name": "Deck Name",
+  "cards": [
+    {
+      "question": "Question",
+      "answer": "Answer"
+    }
+  ]
+}`;
 const errorModal =document.querySelector("#error-modal");
 const errorModalCloseBtn = errorModal.querySelector(".modal__btn_type_close");
 const errorMessageEl = errorModal.querySelector(".modal__error");
@@ -31,10 +40,22 @@ function normalizeColor(color) {
 
 export{showError};
 
+/**
+ * Displays the given error message in the error modal.
+ * @param {string} message - The error message to show.
+ * @returns {void}
+ */
+
 function showError(message) {
 errorMessageEl.textContent = message;
 errorModal.classList.add("modal_visible");
 }
+
+/**
+ * Attempts to parse a string as JSON.
+ * @param {string} jsonString - The string to parse.
+ * @returns {Object|null} The parsed object, or null if the string isn't valid JSON.
+ */
 
 function parseJSON(jsonString) {
 try{
@@ -43,12 +64,24 @@ try{
   return null;
 }
 }
+
+/**
+ * Validates that a name is a string between 2 and 80 characters long.
+ * @param {string} name - The name to validate.
+ * @returns {string|null} The valid name, or null if it fails validation.
+ */
+
 function validateName(name){
   if (typeof name !="string" || name.length < 2 || name.length > 80) {
     return null;
   }
   return name;
 }
+/**
+ * Enables the "Create deck" submit button.
+ * @returns {void}
+ */
+
 export function disableSubmitBtn() {
   submitBtn.disabled = false;
 }

@@ -23,7 +23,25 @@
 }
 
 .new-deck-view__color-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
   border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.new-deck-view__textarea {
+  width: 100%;
+  max-width: 670px;
+  height: 230px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  font-family: monospace;
+  resize: vertical;
+  box-sizing: border-box;
 }
 
 .new-deck-view__color-input:checked {
